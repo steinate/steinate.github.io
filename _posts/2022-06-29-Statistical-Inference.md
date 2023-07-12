@@ -1,7 +1,7 @@
 ---
 layout: post
-title: A Example Post
-date: 2022-06-28 00:00:00 +0800
+title: Statistical Inference
+date: 2023-07-12 00:00:00 +0800
 category: tutorial
 thumbnail: /style/image/thumbnail.png
 icon: book
