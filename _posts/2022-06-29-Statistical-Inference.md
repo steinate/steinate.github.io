@@ -10,10 +10,13 @@ icon: book
 
 * content
 {:toc}
+# Statistical Inference
 
-## sub title
+## Bayesian Hypothesis Testing  
 
-page...
+In a Bayesian hypothesis testing problem, the complete model therefore consists of the a priori probabilities :
+
+$p_H(H_m)$
 
 ## about thumbnail
 
