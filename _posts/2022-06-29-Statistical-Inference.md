@@ -16,7 +16,7 @@ icon: book
 
 In a Bayesian hypothesis testing problem, the complete model therefore consists of the a priori probabilities:
 
-$p_H(H_m)$
+$$p_H(H_m)$$
 
 together with a characterization of the observed data under each hypothesis, which takes the form of the conditional probability distributions
 
