@@ -139,7 +139,7 @@ comments: false
 
     <!-- 音频 -->
     <audio id="bgm" loop>
-        <source src="happy-birthday.mp3" type="audio/mpeg">
+        <source src="VISUAL_ARTS.mp3" type="audio/mpeg">
     </audio>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -185,6 +185,47 @@ comments: false
         document.body.onclick = () => {
             document.getElementById('bgm').play();
         }
+
+        function showFireworks() {
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+        for (let i = 0; i < 100; i++) {
+            const particle = document.createElement('div');
+            const size = Math.random() * 10 + 5; // 粒子大小
+            particle.style = `
+                position: fixed;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 100}%;
+                width: ${size}px;
+                height: ${size}px;
+                background: ${colors[Math.floor(Math.random() * colors.length)]};
+                border-radius: 50%;
+                animation: explode 1.5s ease-out forwards;
+            `;
+            document.body.appendChild(particle);
+
+            // 移除粒子
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+        document.getElementById('bgm').play();
+}
+
+// 添加烟花动画的关键帧
+const style = document.createElement('style');
+style.innerHTML = `
+    @keyframes explode {
+        0% {
+            transform: scale(0.5);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(3);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
     </script>
 </body>
 </html>
