@@ -1,5 +1,5 @@
 ---
-layout: full
+layout: custom
 title: "Happy Birthday, 周丹!"
 date: 2025-04-02 00:00:00 +0800
 category: celebration
