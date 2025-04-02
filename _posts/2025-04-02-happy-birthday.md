@@ -161,6 +161,45 @@ comments: false
             }
         });
 
+        function createShootingStar() {
+            const star = document.createElement('div');
+            star.style = `
+                position: fixed;
+                top: ${Math.random() * 50}%;
+                left: ${Math.random() * 100}%;
+                width: 2px;
+                height: 100px;
+                background: linear-gradient(45deg, #ffffff, rgba(255, 255, 255, 0));
+                transform: rotate(${Math.random() * 45}deg);
+                animation: shooting 2s linear forwards;
+            `;
+            document.body.appendChild(star);
+
+            // 移除流星
+            star.addEventListener('animationend', () => {
+                star.remove();
+            });
+        }
+
+        // 添加流星动画的关键帧
+        const shootingStyle = document.createElement('style');
+        shootingStyle.innerHTML = `
+            @keyframes shooting {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) translateX(0);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(200px) translateX(200px);
+                }
+            }
+        `;
+        document.head.appendChild(shootingStyle);
+
+        // 定时生成流星
+        setInterval(createShootingStar, 1000);
+
         // 烟花特效
         function showFireworks() {
             const colors = ['#ff0000', '#00ff00', '#0000ff'];
@@ -178,54 +217,12 @@ comments: false
                 `;
                 document.body.appendChild(particle);
             }
-            document.getElementById('bgm').play();
         }
 
         // 自动播放音乐（可能需要用户交互）
         document.body.onclick = () => {
             document.getElementById('bgm').play();
         }
-
-        function showFireworks() {
-        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-        for (let i = 0; i < 100; i++) {
-            const particle = document.createElement('div');
-            const size = Math.random() * 10 + 5; // 粒子大小
-            particle.style = `
-                position: fixed;
-                left: ${Math.random() * 100}%;
-                top: ${Math.random() * 100}%;
-                width: ${size}px;
-                height: ${size}px;
-                background: ${colors[Math.floor(Math.random() * colors.length)]};
-                border-radius: 50%;
-                animation: explode 1.5s ease-out forwards;
-            `;
-            document.body.appendChild(particle);
-
-            // 移除粒子
-            particle.addEventListener('animationend', () => {
-                particle.remove();
-            });
-        }
-        document.getElementById('bgm').play();
-}
-
-// 添加烟花动画的关键帧
-const style = document.createElement('style');
-style.innerHTML = `
-    @keyframes explode {
-        0% {
-            transform: scale(0.5);
-            opacity: 1;
-        }
-        100% {
-            transform: scale(3);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
     </script>
 </body>
 </html>
