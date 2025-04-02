@@ -219,6 +219,43 @@ comments: false
             }
         }
 
+        document.addEventListener('mousemove', (e) => {
+            const trail = document.createElement('div');
+            trail.style = `
+                position: fixed;
+                left: ${e.pageX}px;
+                top: ${e.pageY}px;
+                width: 10px;
+                height: 10px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                pointer-events: none;
+                animation: fadeOut 1s forwards;
+            `;
+            document.body.appendChild(trail);
+
+            // 移除轨迹
+            trail.addEventListener('animationend', () => {
+                trail.remove();
+            });
+        });
+
+        // 鼠标轨迹淡出动画
+        const trailStyle = document.createElement('style');
+        trailStyle.innerHTML = `
+            @keyframes fadeOut {
+                0% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: scale(0.5);
+                }
+            }
+        `;
+        document.head.appendChild(trailStyle);
+
         // 自动播放音乐（可能需要用户交互）
         document.body.onclick = () => {
             document.getElementById('bgm').play();
