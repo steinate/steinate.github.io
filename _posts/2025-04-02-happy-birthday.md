@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Happy Birthday, [Friend's Name]!"
+title: "Happy Birthday, 周丹!"
 date: 2025-04-02 00:00:00 +0800
 category: celebration
 thumbnail: /style/image/birthday.jpg
@@ -124,7 +124,7 @@ icon: cake
                 <p>🎈 Click to open your surprise 🎁</p>
             </div>
             <div class="back">
-                <h2>Dear [Friend's Name]</h2>
+                <h2>Dear 周丹</h2>
                 <p>✨ On your special day, I wish you:</p>
                 <ul>
                     <li>Endless Joy 🌈</li>
