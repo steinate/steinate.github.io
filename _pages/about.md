@@ -1,6 +1,6 @@
 ---
 layout: about
-title: Jiaqi Peng
+title: about
 permalink: /
 # subtitle: <a href='#'>www.tsinghua.edu.cn</a>. Address. Contacts. Motto. Etc.
 

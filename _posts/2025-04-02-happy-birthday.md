@@ -1,6 +1,6 @@
 ---
 layout: custom
-title: "Happy Birthday, 周丹!"
+title: "Happy Birthday!"
 date: 2025-04-02 00:00:00 +0800
 category: celebration
 thumbnail: /style/image/birthday.jpg
