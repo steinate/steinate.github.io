@@ -24,7 +24,7 @@ comments: false
             margin: 0;
             overflow: hidden;
             font-family: 'Comic Sans MS', cursive;
-            background: 'assets\img\background.jpg' center/cover no-repeat;
+            background: 'background.jpg' center/cover no-repeat;
             position: relative;
             min-height: 100vh;
         }
@@ -183,7 +183,7 @@ comments: false
 
     <!-- 音频 -->
     <audio id="bgm" loop>
-        <source src="assets\audio\meetyou.mp3" type="audio/mpeg">
+        <source src="meetyou.mp3" type="audio/mpeg">
     </audio>
 
     <!-- 粒子背景 -->
