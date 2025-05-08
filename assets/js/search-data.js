@@ -48,6 +48,17 @@ ninja.data = [{
             window.location.href = "/blog/2025/happy-birthday/";
           
         },
+      },{id: "post-happy-birthday",
+        
+          title: "Happy Birthday!",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/happy-birthday/";
+          
+        },
       },{id: "post-a-post-with-plotly-js",
         
           title: "a post with plotly.js",
