@@ -11,7 +11,7 @@ comments: false
 <!DOCTYPE html>
 <html>
 <head>
-    <title>🎂 Happy Birthday [Name]! 🌟</title>
+    <title>🎂 Happy Birthday 周丹! 🌟</title>
     <meta charset="utf-8">
     <style>
         :root {
@@ -139,8 +139,31 @@ comments: false
 
     <!-- 音频 -->
     <audio id="bgm" loop>
-        <source src="VISUAL_ARTS.mp3" type="audio/mpeg">
+        <source src="assets\audio\meetyou.mp3" type="audio/mpeg">
     </audio>
+
+    <script>
+    // 自动播放处理
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('bgm');
+        const playPromise = audio.play();
+        
+        // 处理浏览器自动播放限制
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                // 显示交互提示
+                const card = document.querySelector('.card');
+                card.insertAdjacentHTML('beforebegin', 
+                    '<p class="play-tip">✨ 点击页面任意位置播放音乐 ✨</p>');
+                
+                // 保留原有的点击播放功能
+                document.body.onclick = () => {
+                    audio.play();
+                    document.querySelector('.play-tip')?.remove();
+                }
+            });
+        }
+    });
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
@@ -219,10 +242,6 @@ comments: false
             }
         }
 
-        // 自动播放音乐（可能需要用户交互）
-        document.body.onclick = () => {
-            document.getElementById('bgm').play();
-        }
     </script>
 </body>
 </html>
