@@ -18,13 +18,14 @@ comments: false
         :root {
             --primary-color: #ff6b6b;
             --secondary-color: #4ecdc4;
+            --background-image: url('background.jpg');
         }
 
         body {
             margin: 0;
             overflow: hidden;
             font-family: 'Comic Sans MS', cursive;
-            background: linear-gradient(45deg, #2c3e50, #3498db);
+            background: var(--background-image) center/cover;
         }
     
         /* 新增背景遮罩层 */
@@ -181,7 +182,7 @@ comments: false
 
     <!-- 音频 -->
     <audio id="bgm" loop>
-        <source src="assets/audio/meetyou.mp3" type="audio/mpeg">
+        <source src="./meetyou.mp3" type="audio/mpeg">
     </audio>
 
     <div class="row mt-3">
