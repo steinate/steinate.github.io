@@ -38,98 +38,62 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&amp;display=swap" rel="stylesheet">
     <style>
         @keyframes float {
-            0% {
-                transform: translateY(0) rotate(0);
-                opacity: .6
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-                opacity: .9
-            }
-
-            100% {
-                transform: translateY(0) rotate(0);
-                opacity: .6
-            }
+            0% { transform: translateY(0) rotate(0); opacity: .6 }
+            50% { transform: translateY(-20px) rotate(5deg); opacity: .9 }
+            100% { transform: translateY(0) rotate(0); opacity: .6 }
         }
 
         @keyframes openEnvelope {
-            0% {
-                transform: rotateX(0)
-            }
-
-            100% {
-                transform: rotateX(-180deg)
-            }
+            0% { transform: rotateX(0) }
+            100% { transform: rotateX(-180deg) }
         }
 
         @keyframes closeEnvelope {
-            0% {
-                transform: rotateX(-180deg)
-            }
-
-            100% {
-                transform: rotateX(0)
-            }
+            0% { transform: rotateX(-180deg) }
+            100% { transform: rotateX(0) }
         }
 
         @keyframes letterAppear {
-            0% {
-                opacity: 0;
-                transform: translateY(20px)
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(-10px)
-            }
+            0% { opacity: 0; transform: translateY(20px) }
+            100% { opacity: 1; transform: translateY(0) }
         }
 
         @keyframes letterDisappear {
-            0% {
-                opacity: 1;
-                transform: translateY(-10px)
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(20px)
-            }
+            0% { opacity: 1; transform: translateY(0) }
+            100% { opacity: 0; transform: translateY(20px) }
         }
 
         @keyframes fadeOut {
-            0% {
-                opacity: 1;
-                transform: scale(1)
-            }
-
-            100% {
-                opacity: 0;
-                transform: scale(0.8)
-            }
+            0% { opacity: 1; transform: scale(1) }
+            100% { opacity: 0; transform: scale(0.8) }
         }
 
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.8)
-            }
+            0% { opacity: 0; transform: scale(0.8) }
+            100% { opacity: 1; transform: scale(1) }
+        }
 
-            100% {
-                opacity: 1;
-                transform: scale(1)
-            }
+        /* 容器设置为相对定位，作为信封和信件的参考点 */
+        .content-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            /* 信封高度的80%，确保有足够空间显示信件 */
+            height: min(80vh, 700px);
+            margin: 0 auto;
         }
 
         .envelope {
-            position: relative;
+            position: absolute;
+            top: 0; /* 信封顶部对齐容器顶部 */
+            left: 50%;
+            transform: translateX(-50%);
             width: min(90vw, 900px);
             height: min(80vh, 700px);
             transform-style: preserve-3d;
             transition: transform .5s;
             cursor: pointer;
-            z-index: 2
+            z-index: 2;
         }
 
         .envelope-front,
@@ -173,39 +137,48 @@
             transition: background-color .3s ease
         }
 
+        /* 信件容器与信封顶部齐平 */
         .letter-container {
-            position: relative;
+            position: absolute;
+            top: 0; /* 信件顶部与容器顶部对齐，和信封保持一致 */
+            left: 0;
             width: 100%;
+            height: 100%;
             display: flex;
             justify-content: center;
-            margin-bottom: 2rem; /* 与下方信封保持距离 */
+            align-items: flex-start; /* 从顶部开始对齐 */
             opacity: 0;
             transition: opacity .8s ease .5s;
-            z-index: 0
+            z-index: 0;
+            pointer-events: none;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        .envelope.open+.letter-container {
+        .envelope.open ~ .letter-container {
             opacity: 1;
-            z-index: 3
+            z-index: 3;
+            pointer-events: auto;
         }
 
         .letter {
-            max-width: 800px;
-            max-height: 600px;
-            width: 80vw;
+            max-width: 90vw;
+            max-height: 80vh;
+            width: 100%;
             background-color: white;
             border-radius: 12px;
-            padding: 35px;
+            padding: clamp(20px, 5vw, 35px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transform: translateY(5px);
+            transform: translateY(20px);
             transition: transform .8s ease .7s;
             box-sizing: border-box;
             overflow-x: hidden;
-            cursor: pointer
+            cursor: pointer;
+            margin-top: 0; /* 确保顶部没有额外间距 */
         }
 
-        .envelope.open+.letter-container .letter {
-            transform: translateY(-10px)
+        .envelope.open ~ .letter-container .letter {
+            transform: translateY(0);
         }
 
         .markdown-content {
@@ -213,7 +186,7 @@
             color: #333;
             line-height: 1.8;
             font-size: clamp(1.1rem, 2vw, 1.3rem);
-            max-height: calc(600px - 70px);
+            max-height: calc(80vh - 100px);
             overflow-y: auto;
             padding-right: 10px
         }
@@ -328,22 +301,27 @@
     </style>
 </head>
 
-<body
-    class="bg-gradient-to-br from-love-lavender to-love-light min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden relative">
+<body class="bg-gradient-to-br from-love-lavender to-love-light min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden relative">
     <div class="relative w-full max-w-6xl flex flex-col items-center justify-center">
-        <div id="envelope-container" class="envelope envelope-shadow mb-6 closed">
-            <div class="envelope-flap flex items-center justify-center"> <i
-                    class="fa fa-heart text-white text-[clamp(5rem,12vw,9rem)]"></i> </div>
-            <div class="envelope-front"></div>
-            <div class="envelope-back"></div>
-            <div class="open-text-container">
-                <p id="open-text" class="open-text text-[clamp(2.5rem,6vw,4rem)]">点击打开</p>
+        <!-- 新增内容容器，确保信封和信件有相同的定位参考 -->
+        <div class="content-wrapper">
+            <!-- 信封保持在顶部 -->
+            <div id="envelope-container" class="envelope envelope-shadow closed">
+                <div class="envelope-flap flex items-center justify-center"> 
+                    <i class="fa fa-heart text-white text-[clamp(5rem,12vw,9rem)]"></i> 
+                </div>
+                <div class="envelope-front"></div>
+                <div class="envelope-back"></div>
+                <div class="open-text-container">
+                    <p id="open-text" class="open-text text-[clamp(2.5rem,6vw,4rem)]">点击打开</p>
+                </div>
             </div>
-        </div>
-        <div class="letter-container">
-            <div id="letter" class="letter">
-                <div id="markdown-render" class="markdown-content"></div>
-                <div id="markdown-source" style="display: none;"> 
+
+            <!-- 信件容器与信封顶部齐平 -->
+            <div class="letter-container">
+                <div id="letter" class="letter">
+                    <div id="markdown-render" class="markdown-content"></div>
+                    <div id="markdown-source" style="display: none;"> 
                     
 # 亲爱的 zd： 
 
@@ -396,15 +374,16 @@ Happy Birthday 🌟](https://steinate.github.io/blog/2025/happy-birthday/)
 说了很多自以为是的话，5月份的时候你就直接的问我“你觉得我怎么样”，你最后说“那我们再相处一段时间吧”，我事后还是觉得很感动的不知你是付出了多大的决心说出这句话的，希望我没有太打扰到你，我还是一直没有变而且我一直都很有耐心，**“今生不想错过你”**，我觉得大家都没有做好恋爱的准备，慢慢来吧，我可以一直做你的羽毛球搭子，只在需要我的时候出现就行。如果你觉得和我在一起不够好，你可以直接说，大家也可以在各自的道路上见证自己的成长。
 
 --- 
-                    
-                    <div class="signature">pjq</div>
-                    <div style="text-align: right; margin-top: 10px;">七夕节</div>
+                        <div class="signature">pjq</div>
+                        <div style="text-align: right; margin-top: 10px;">七夕节</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <p id="hint-text"
-            class="font-romantic text-love-dark text-[clamp(1.25rem,3vw,1.5rem)] opacity-80 text-center mt-12">
-            一封特别的信，等待你的开启 </p>
+
+        <p id="hint-text" class="font-romantic text-love-dark text-[clamp(1.25rem,3vw,1.5rem)] opacity-80 text-center mt-12">
+            一封特别的信，等待你的开启 
+        </p>
     </div>
     <footer class="mt-auto pt-8 text-love-purple/70 text-sm">
         <p>七夕快乐 ❤️</p>
@@ -412,13 +391,8 @@ Happy Birthday 🌟](https://steinate.github.io/blog/2025/happy-birthday/)
     <script>
         // 页面加载完成后渲染Markdown内容
         window.addEventListener('load', function () {
-            // 获取Markdown源内容
             const markdownSource = document.getElementById('markdown-source').textContent;
-
-            // 渲染Markdown到页面
             document.getElementById('markdown-render').innerHTML = marked.parse(markdownSource);
-
-            // 创建漂浮爱心
             createHearts();
         });
 
