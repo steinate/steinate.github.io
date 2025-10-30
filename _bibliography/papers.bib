@@ -1,5 +1,40 @@
 ---
 ---
+@article{peng2025logoplanner,
+  title={LoGoPlanner: Localization Grounded Navigation Policy with Metric-aware Visual Geometry},
+  author={Jiaqi Peng, Wenzhe Cai, Yuqiang Yang, Tai Wang, Yuan Shen, Jiangmiao Pang},
+  journal={Arxiv, 2025},
+  year={2025},
+  abstract={Trajectory planning in unstructured environments is a fundamental and challenging capability for mobile robots. Traditional modular pipelines suffer from latency and cascading errors across perception, localization, mapping, and planning modules. Recent end-to-end learning methods map raw visual observations directly to control signals or trajectories, promising greater performance and efficiency in open-world settings. However, most prior end-to-end approaches still rely on separate localization modules that depend on accurate sensor extrinsic calibration for self-state estimation, thereby limiting generalization across embodiments and environments. We introduce LoGoPlanner, a localization-grounded, end-to-end navigation framework that addresses these limitations by: (1) finetuning a long-horizon visual-geometry backbone to ground predictions with absolute metric scale, thereby providing implicit state estimation for accurate localization; (2) reconstructing surrounding scene geometry from historical observations to supply dense, fine-grained environmental awareness for reliable obstacle avoidance; and (3) conditioning the policy on implicit geometry bootstrapped by the aforementioned auxiliary tasks, thereby reducing error propagation. We evaluate LoGoPlanner in both simulation and real-world settings, where its fully end-to-end design reduces cumulative error while metric-aware geometry memory enhances planning consistency and obstacle avoidance, leading to more than a 27.3% improvement over oracle-localization baselines and strong generalization across embodiments and environments.},
+  selected={true},
+  preview={logoplanner.svg},
+  url={https://steinate.github.io/logoplanner.github.io/},
+}
+
+@article{wei2025ground,
+  title={Ground Slow, Move Fast: A Dual-System Foundation Model for Generalizable Vision-Language Navigation},
+  author={Meng Wei, Chenyang Wan, Jiaqi Peng, Xiqian Yu, Yuqiang Yang, Delin Feng, Wenzhe Cai, Chenming Zhu, Tai Wang, Jiangmiao Pang, Xihui Liu},
+  journal={Arxiv, 2025},
+  year={2025},
+  abstract={While recent large vision-language models (VLMs) have improved generalization in vision-language navigation (VLN), existing methods typically rely on end-to-end pipelines that map vision-language inputs directly to short-horizon discrete actions. Such designs often produce fragmented motions, incur high latency, and struggle with real-world challenges like dynamic obstacle avoidance. We propose DualVLN, the first dual-system VLN foundation model that synergistically integrates high-level reasoning with low-level action execution. System 2, a VLM-based global planner, “grounds slowly” by predicting mid-term waypoint goals via image-grounded reasoning. System 1, a lightweight, multi-modal conditioning Diffusion Transformer policy, “moves fast” by leveraging both explicit pixel goals and latent features from System 2 to generate smooth and accurate trajectories. The dual-system design enables robust real-time control and adaptive local decision-making in complex, dynamic environments. By decoupling training, the VLM retains its generalization, while System 1 achieves interpretable and effective local navigation. DualVLN outperforms prior methods across all VLN benchmarks and real-world experiments demonstrate robust long-horizon planning and real-time adaptability in dynamic environments.},
+  selected={true},
+  preview={DualVLN.jpg},
+  url={https://dualvln.github.io/},
+}
+
+
+@article{intern2025internvla,
+  title={InternVLA-N1: An Open Dual-System Vision-Language Navigation Foundation Model with Learned Latent Plans},
+  author={Intern Robotics, Shanghai AI Laboratory},
+  journal={Arxiv, 2025},
+  year={2025},
+  abstract={We introduce InternVLA-N1, the first open dual-system vision-language navigation foundation model. Unlike previous navigation foundation models that can only take short-term actions from a limited discrete space, InternVLA-N1 decouples the task as pixel-goal planning with System 2 and agile execution with System 1. A curriculum two-stage training paradigm is devised for this framework: First, two systems are pretrained with explicit pixel goals as supervision or condition. Subsequently, we freeze System 2 and finetune the newly added latent plans with System 1 in an asynchronous end-to-end manner. Such a paradigm relying on latent plans as the intermediate representation removes the ambiguity of pixel goal planning and provides new potentials for pretraining extensions with video prediction. To enable scalable training, we develop an efficient navigation data generation pipeline and introduce InternData-N1, the largest navigation dataset to date. InternData-N1 comprises over 50 million egocentric images collected from more than 3,000 scenes, amounting to 4,839 kilometers of robot navigation experience. We evaluate InternVLA-N1 across 6 challenging navigation benchmarks, where it consistently achieves state-of-the-art performance, with improvements ranging from 3% to 28%. In particular, it demonstrates synergistic integration of long-horizon planning (>150m) and real-time decision-making (>30Hz) capabilities and can be zero-shot generalized across diverse embodiments (wheeled, quadruped, humanoid) and in-the-wild environments. All code, models, and datasets are publicly available.},
+  selected={true},
+  preview={internvla_model.png},
+  url={https://internrobotics.github.io/internvla-n1.github.io/},
+  pdf={https://internrobotics.github.io/internvla-n1.github.io/static/pdfs/InternVLA_N1.pdf},
+}
+
 
 @article{cai2025navdp,
   title={NavDP: Learning Sim-to-Real Navigation Diffusion Policy with Privileged Information Guidance},
@@ -9,6 +44,8 @@
   abstract={We present a sim-to-real navigation diffusion policy that can achieve cross-embodiment generalization in dynamic, cluttered and diverse real-world scenarios.},
   selected={true},
   preview={navdp.png},
+  url={https://wzcai99.github.io/navigation-diffusion-policy.github.io/},
+  pdf={https://arxiv.org/pdf/2505.08712},
 }
 
 @article{peng2025towards,
@@ -20,6 +57,7 @@
   abstract={Although existing 3D perception algorithms have demonstrated significant improvements in performance, their deployment on edge devices continues to encounter critical challenges due to substantial runtime latency. We propose a new benchmark tailored for online evaluation by considering runtime latency. Based on the benchmark, we build a Latency-Aware 3D Streaming Perception (LASP) framework that addresses the latency issue through two primary components: 1) latency-aware history integration, which extends query propagation into a continuous process, ensuring the integration of historical feature regardless of varying latency; 2) latency-aware predictive detection, a module that compensates the detection results with the predicted trajectory and the posterior accessed latency. By incorporating the latency-aware mechanism, our method shows generalization across various latency levels, achieving an online performance that closely aligns with 80% of its offline evaluation on the Jetson AGX Orin without any acceleration techniques.},
   selected={true},
   preview={lasp.png},
+  pdf={https://arxiv.org/pdf/2504.19115},
 }
 
 

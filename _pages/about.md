@@ -21,7 +21,7 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-I am a second-year Ph.D. student in Department of Electronic Engineering, Tsinghua University, supervised by [Yuan Shen](https://oa.ee.tsinghua.edu.cn/~shenyuan/), jointly trained with Shanghai AI laboratory, supervised by [Jiangmiao Pang](https://oceanpang.github.io/), conducting research in autonomous driving and agile navigation systems in complex environments at OpenRobotLab.
+I am a third-year Ph.D. student in Department of Electronic Engineering, Tsinghua University, supervised by [Yuan Shen](https://oa.ee.tsinghua.edu.cn/~shenyuan/), jointly trained with Shanghai AI laboratory, supervised by [Jiangmiao Pang](https://oceanpang.github.io/), conducting research in autonomous driving and agile navigation systems in complex environments at OpenRobotLab.
 
 Before that, I received my B.S. degree in Electronic Engineering from Shanghai Jiao Tong University in 2023, supervised by [Weiyao Lin](https://weiyaolin.github.io/), engaging in classical computer vision research, such as object detection, multi-object tracking and monocular/multi-view human pose estimation. I also spend a wonderful time in OpenGVLab in 2023, supervised by [Jifeng Dai](https://jifengdai.org/) and [Wenhai Wang](https://whai362.github.io/), participating in the construction of multimodal LLM.
 
