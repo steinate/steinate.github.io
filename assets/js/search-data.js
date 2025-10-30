@@ -37,51 +37,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-qixi",
-        
-          title: "Qixi",
-        
-        description: "",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/qixi/";
-          
-        },
-      },{id: "post-hello-to-my-page",
-        
-          title: "Hello To My Page",
-        
-        description: "",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/hello-to-my-page/";
-          
-        },
-      },{id: "post-happy-birthday",
-        
-          title: "Happy Birthday!",
-        
-        description: "",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/happy-birthday/";
-          
-        },
-      },{id: "post-happy-birthday",
-        
-          title: "Happy Birthday!",
-        
-        description: "",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/happy-birthday/";
-          
-        },
-      },{id: "post-a-post-with-plotly-js",
+        },{id: "post-a-post-with-plotly-js",
         
           title: "a post with plotly.js",
         
