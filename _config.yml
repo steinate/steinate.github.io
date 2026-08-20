@@ -260,8 +260,8 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Peng, 彭]
+  first_name: [Jiaqi, J., 嘉淇]
 
   style: apa
   locale: en
@@ -281,6 +281,8 @@ scholar:
   details_link: Details
 
   query: "@*"
+  sort_by: year, month
+  order: descending
   group_by: year
   group_order: descending
 
@@ -306,9 +308,11 @@ filtered_bibtex_keywords:
     bibtex_show,
     blog,
     code,
+    dataset,
     google_scholar_id,
     html,
     inspirehep_id,
+    model,
     pdf,
     poster,
     preview,
