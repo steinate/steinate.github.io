@@ -727,18 +727,67 @@ footer.sticky-bottom {
     margin-top: 0;
 
     li {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
 
-      .preview {
+      .publication-card {
+        align-items: stretch;
+        background: var(--global-card-bg-color);
+        border: 1px solid var(--global-divider-color);
+        border-radius: 0.9rem;
+        box-shadow: 0 0.35rem 1.1rem rgba(0, 0, 0, 0.06);
+        margin-left: 0;
+        margin-right: 0;
+        overflow: hidden;
+        padding: 1rem;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+          border-color: var(--global-theme-color);
+          box-shadow: 0 0.65rem 1.6rem rgba(0, 0, 0, 0.11);
+          transform: translateY(-2px);
+        }
+      }
+
+      .publication-media {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-left: 0;
+        padding-right: 1.25rem;
+
+        figure {
+          margin: 0;
+          width: 100%;
+        }
+
+        .preview {
+          aspect-ratio: 16 / 10;
+          border-radius: 0.65rem !important;
+          display: block;
+          height: auto;
+          object-fit: contain;
+          width: 100%;
+        }
+      }
+
+      .publication-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 0.5rem;
+        padding-right: 0;
       }
 
       .abbr {
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
 
         abbr {
           display: inline-block;
           background-color: var(--global-theme-color);
-          margin-bottom: 0.5rem;
+          align-self: flex-start;
+          margin-bottom: 0.75rem;
+          padding: 0.35rem 0.65rem;
+          width: auto !important;
           color: var(--global-card-bg-color) !important;
 
           a {
@@ -758,9 +807,17 @@ footer.sticky-bottom {
 
       .title {
         font-weight: bolder;
+        font-size: 1.25rem;
+        letter-spacing: -0.015em;
+        line-height: 1.3;
+        margin-bottom: 0.5rem;
       }
 
       .author {
+        font-size: 0.96rem;
+        line-height: 1.55;
+        margin-bottom: 0.35rem;
+
         a {
           border-bottom: 1px dashed var(--global-theme-color);
 
@@ -788,6 +845,8 @@ footer.sticky-bottom {
       }
 
       .links {
+        margin-top: 0.65rem;
+
         a.btn {
           color: var(--global-text-color);
           border: 1px solid var(--global-text-color);
@@ -795,7 +854,8 @@ footer.sticky-bottom {
           padding-right: 1rem;
           padding-top: 0.25rem;
           padding-bottom: 0.25rem;
-          margin-left: 0;
+          border-radius: 999px;
+          margin: 0.2rem 0.25rem 0.2rem 0;
 
           &:hover {
             color: var(--global-theme-color);
@@ -856,6 +916,25 @@ footer.sticky-bottom {
 
       div.abstract.hidden {
         border: dashed 1px var(--global-bg-color);
+      }
+
+      @media (max-width: 767.98px) {
+        .publication-card {
+          padding: 0.85rem;
+        }
+
+        .publication-media {
+          padding-right: 0;
+          margin-bottom: 1rem;
+        }
+
+        .publication-content {
+          padding-left: 0;
+        }
+
+        .title {
+          font-size: 1.12rem;
+        }
       }
 
       div.abstract.hidden.open {
